@@ -2,16 +2,9 @@ module Exercise
   module Arrays
     class << self
       def replace(array)
-        max_element = array.first
-        for current_element in array
-          max_element = current_element if current_element > max_element
-        end
-
+        max_element = max_element_in_array(array)
         new_array = []
-        for current_element in array
-          new_array << (current_element.positive? ? max_element : current_element)
-        end
-
+        array.each { |element| new_array << (element.positive? ? max_element : element) }
         new_array
       end
 
@@ -30,6 +23,14 @@ module Exercise
           end
         end
         -1
+      end
+
+      private
+
+      def max_element_in_array(array)
+        max_element = array.first
+        array.each { |element| max_element = element if element > max_element }
+        max_element
       end
     end
   end

@@ -15,8 +15,21 @@ module Exercise
         new_array
       end
 
-      def search(_array, _query)
-        0
+      def search(array, query)
+        left = 0
+        right = array.size - 1
+        mid = 0
+        while left <= right
+          mid = left + ((right - left) / 2)
+          if query < array[mid]
+            right = mid - 1
+          elsif query > array[mid]
+            left = mid + 1
+          else
+            return mid
+          end
+        end
+        -1
       end
     end
   end

@@ -3,9 +3,7 @@ module Exercise
     class << self
       def replace(array)
         max_element = max_element_in_array(array)
-        new_array = []
-        array.each { |element| new_array << (element.positive? ? max_element : element) }
-        new_array
+        array.map { |element| element.positive? ? max_element : element }
       end
 
       def search(array, query)

@@ -10,8 +10,9 @@ module Exercise
         accumulate_rating / selected_films.size
       end
 
-      def chars_count(_films, _threshold)
-        0
+      def chars_count(films, threshold)
+        char = 'и'
+        films.select { |film| film['rating_kinopoisk'].to_f >= threshold }.reduce(0) { |acc, film| acc + film['name'].count(char) }
       end
     end
   end

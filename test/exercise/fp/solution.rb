@@ -12,7 +12,7 @@ module Exercise
 
       def chars_count(films, threshold)
         char = 'и'
-        films.select { |film| film['rating_kinopoisk'].to_f >= threshold }.reduce(0) { |acc, film| acc + film['name'].count(char) }
+        films.select { |film| film['rating_kinopoisk'].to_f >= threshold }.map { |film| film['name'].count(char) }.reduce(:+)
       end
     end
   end

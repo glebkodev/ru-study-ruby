@@ -5,11 +5,12 @@ module Exercise
       # Использовать свои написанные функции для реализации следующих - можно.
 
       # Написать свою функцию my_each
-      def my_each(index = 0, &func)
-        return self if index == size
+      def my_each(array = nil, &func)
+        head, *tail = array || self
+        func.call(head)
+        return self if tail.empty?
 
-        func.call(self[index])
-        my_each(index + 1, &func)
+        my_each(tail, &func)
       end
 
       # Написать свою функцию my_map
